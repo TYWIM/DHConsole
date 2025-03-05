@@ -1,21 +1,22 @@
 # DHConsole
 
-A local web app to control Danheng Server via UI with full i18n support.
+English | [中文](./README.zh-CN.md)
+
+A local web app to control Danheng Server via UI with i18n support in 12 languages.
 
 Visit https://anyrainel.github.io/DHConsole/ to use the latest version.
 
 ## Features
 
-- [x] Character Management: Stats, Light Cone, Relics, etc.
+- [x] Character Management (change Stats, Light Cone, Relics, etc.)
 - [x] Relic Management (pick your affixes and upgrades, or let DHConsole recommend for you)
 - [x] Mission Management (pick missions to skip)
+- [x] Scene Management (unlock props in the scene, as a workaround for not implemented features)
 - [x] Inventory Management (send more items to inventory)
-- [x] Account level, gender and other controls
+- [x] Account level, gender and other controls (e.g. unlock everything)
 - [x] Custom Commands
 
 ![features](./docs/features.gif)
-
-Some features still have bugs (e.g. remove unused equipment), and I'm working on fixing them.
 
 ### Full i18n support
 ![intro](./docs/intro.gif)
