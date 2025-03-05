@@ -250,12 +250,14 @@
             "title": "1. Instalar el Plugin Requerido en Plugins/",
             "button": "Obtener Plugin DHConsole Commands",
             "loading": "Cargando información del plugin...",
-            "version": "Última versión: {{version}} (Publicado: {{date}})"
+            "version": "Última versión: {{version}} (Hora de publicación: {{date}})"
         },
         "updates": {
             "title": "2. Usar DHConsole desde Github Pages (o ejecutar localmente)",
             "hosted": "Usar Versión Alojada",
-            "local": "Ejecutar Localmente (repositorio DHConsole)"
+            "local": "Ejecutar Localmente (repositorio DHConsole)",
+            "loading": "Cargando información de publicación...",
+            "deployment": "Última publicación: {{date}}"
         },
         "docs": {
             "text": "Para instrucciones detalladas de configuración, por favor visita la",

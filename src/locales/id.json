@@ -250,12 +250,14 @@
             "title": "1. Pasang Plugin yang Diperlukan ke Plugins/",
             "button": "Dapatkan Plugin DHConsole Commands",
             "loading": "Memuat informasi plugin...",
-            "version": "Versi terbaru: {{version}} (Dirilis: {{date}})"
+            "version": "Versi terbaru: {{version}} (Waktu rilis: {{date}})"
         },
         "updates": {
             "title": "2. Gunakan DHConsole dari Github Pages (atau jalankan secara lokal)",
-            "hosted": "Gunakan Versi Hosted",
-            "local": "Jalankan Secara Lokal (repositori DHConsole)"
+            "hosted": "Gunakan Versi Hosting",
+            "local": "Jalankan Secara Lokal (repositori DHConsole)",
+            "loading": "Memuat informasi rilis...",
+            "deployment": "Terakhir dirilis: {{date}}"
         },
         "docs": {
             "text": "Untuk instruksi pengaturan terperinci, silakan kunjungi",

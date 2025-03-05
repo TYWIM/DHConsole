@@ -19,30 +19,82 @@ interface ReleaseInfo {
   published_at: string;
 }
 
+interface DeploymentInfo {
+  deployed_at: string;
+}
+
 export default function Index() {
   const { t } = useTranslation();
   const [releaseInfo, setReleaseInfo] = React.useState<ReleaseInfo | null>(null);
+  const [deploymentInfo, setDeploymentInfo] = React.useState<DeploymentInfo | null>(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const fetchReleaseInfo = async () => {
+    const fetchInfo = async () => {
       try {
-        const response = await axios.get(
-          'https://api.github.com/repos/Anyrainel/DanhengPlugin-DHConsoleCommands/releases/latest'
-        );
+        const [releaseResponse, deploymentResponse] = await Promise.all([
+          axios.get(
+            'https://api.github.com/repos/Anyrainel/DanhengPlugin-DHConsoleCommands/releases/latest'
+          ),
+          axios.get(
+            'https://api.github.com/repos/Anyrainel/DHConsole/deployments',
+            {
+              params: {
+                environment: 'github-pages',
+                per_page: 1
+              }
+            }
+          )
+        ]);
+
         setReleaseInfo({
-          tag_name: response.data.tag_name,
-          published_at: new Date(response.data.published_at).toLocaleString(),
+          tag_name: releaseResponse.data.tag_name,
+          published_at: new Date(releaseResponse.data.published_at).toLocaleString(),
         });
+
+        if (deploymentResponse.data.length > 0) {
+          setDeploymentInfo({
+            deployed_at: new Date(deploymentResponse.data[0].created_at).toLocaleString(),
+          });
+        }
       } catch (err) {
-        console.error('Error fetching release info:', err);
+        console.error('Error fetching info:', err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchReleaseInfo();
+    fetchInfo();
   }, []);
+
+  const InfoText = ({ children }: { children: React.ReactNode }) => (
+    <Box display="block">
+      <Typography
+        variant="body2"
+        sx={{
+          mt: 1.5,
+          px: 1.5,
+          py: 0.75,
+          borderRadius: 1,
+          fontFamily: 'monospace',
+          bgcolor: 'action.hover',
+          opacity: 0,
+          display: 'inline-block',
+          animation: 'fadeIn 0.5s ease-out forwards',
+          '@keyframes fadeIn': {
+            from: {
+              opacity: 0,
+            },
+            to: {
+              opacity: 1,
+            },
+          },
+        }}
+      >
+        {children}
+      </Typography>
+    </Box>
+  );
 
   return (
     <Container maxWidth="md">
@@ -110,27 +162,12 @@ export default function Index() {
                   </Typography>
                 </Box>
               ) : releaseInfo && (
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mt: 1,
-                    animation: 'fadeIn 0.5s ease-out forwards',
-                    '@keyframes fadeIn': {
-                      from: {
-                        opacity: 0,
-                      },
-                      to: {
-                        opacity: 1,
-                      },
-                    },
-                  }}
-                >
+                <InfoText>
                   {t('welcome.plugin.version', {
                     version: releaseInfo.tag_name,
                     date: releaseInfo.published_at,
                   })}
-                </Typography>
+                </InfoText>
               )}
             </Box>
 
@@ -160,6 +197,20 @@ export default function Index() {
                   {t('welcome.updates.local')}
                 </Button>
               </Stack>
+              {loading ? (
+                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                  <CircularProgress size={16} sx={{ mr: 1 }} />
+                  <Typography variant="body2" color="text.secondary">
+                    {t('welcome.updates.loading')}
+                  </Typography>
+                </Box>
+              ) : deploymentInfo && (
+                <InfoText>
+                  {t('welcome.updates.deployment', {
+                    date: deploymentInfo.deployed_at,
+                  })}
+                </InfoText>
+              )}
             </Box>
 
             <Typography variant="body1" color="text.secondary">

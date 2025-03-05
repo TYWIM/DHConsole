@@ -246,12 +246,14 @@
             "title": "1. 필요한 플러그인을 Plugins/에 설치",
             "button": "DHConsole Commands 플러그인 받기",
             "loading": "플러그인 정보 로딩 중...",
-            "version": "최신 버전: {{version}} (출시일: {{date}})"
+            "version": "최신 버전: {{version}} (출시 시각: {{date}})"
         },
         "updates": {
             "title": "2. Github Pages에서 DHConsole 사용 (또는 로컬에서 실행)",
             "hosted": "호스팅된 버전 사용",
-            "local": "로컬에서 실행 (DHConsole 저장소)"
+            "local": "로컬에서 실행 (DHConsole 저장소)",
+            "loading": "출시 정보 로딩 중...",
+            "deployment": "마지막 출시: {{date}}"
         },
         "docs": {
             "text": "자세한 설정 지침은 다음을 방문하십시오",

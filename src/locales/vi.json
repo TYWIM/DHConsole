@@ -250,12 +250,14 @@
             "title": "1. Cài đặt Plugin Cần thiết vào Plugins/",
             "button": "Tải Plugin DHConsole Commands",
             "loading": "Đang tải thông tin plugin...",
-            "version": "Phiên bản mới nhất: {{version}} (Phát hành: {{date}})"
+            "version": "Phiên bản mới nhất: {{version}} (Thời gian phát hành: {{date}})"
         },
         "updates": {
             "title": "2. Sử dụng DHConsole từ Github Pages (hoặc chạy cục bộ)",
-            "hosted": "Sử dụng Phiên bản Được Lưu Trữ",
-            "local": "Chạy Cục bộ (kho lưu trữ DHConsole)"
+            "hosted": "Sử dụng Phiên bản Đã Lưu trữ",
+            "local": "Chạy Cục bộ (kho lưu trữ DHConsole)",
+            "loading": "Đang tải thông tin phát hành...",
+            "deployment": "Lần phát hành cuối: {{date}}"
         },
         "docs": {
             "text": "Để biết hướng dẫn cài đặt chi tiết, vui lòng truy cập",

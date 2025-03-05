@@ -250,12 +250,14 @@
             "title": "1. 必要なプラグインを Plugins/ にインストール",
             "button": "DHConsole Commands プラグインを入手",
             "loading": "プラグイン情報を読み込み中...",
-            "version": "最新バージョン：{{version}}（リリース日：{{date}}）"
+            "version": "最新バージョン：{{version}}（リリース時刻：{{date}}）"
         },
         "updates": {
-            "title": "2. Github Pages から DHConsole を使用 (またはローカルで実行)",
-            "hosted": "ホストバージョンを使用",
-            "local": "ローカルで実行 (DHConsole リポジトリ)"
+            "title": "2. Github Pages から DHConsole を使用（またはローカルで実行）",
+            "hosted": "ホスト版を使用",
+            "local": "ローカルで実行（DHConsole リポジトリ）",
+            "loading": "リリース情報を読み込み中...",
+            "deployment": "最終リリース：{{date}}"
         },
         "docs": {
             "text": "詳細なセットアップ手順については、以下を参照してください",

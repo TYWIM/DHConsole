@@ -256,7 +256,9 @@
         "updates": {
             "title": "2. Use DHConsole from Github Pages (or run locally)",
             "hosted": "Use Hosted Version",
-            "local": "Run Locally (DHConsole repository)"
+            "local": "Run Locally (DHConsole repository)",
+            "loading": "Loading release info...",
+            "deployment": "Last released: {{date}}"
         },
         "docs": {
             "text": "For detailed setup instructions, please visit the",

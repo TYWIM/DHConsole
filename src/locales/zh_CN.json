@@ -250,12 +250,14 @@
             "title": "1. 安装所需插件到 Plugins/ 目录",
             "button": "获取 DHConsole Commands 插件",
             "loading": "正在加载插件信息...",
-            "version": "最新版本：{{version}}（发布日期：{{date}}）"
+            "version": "最新版本：{{version}}（发布时间：{{date}}）"
         },
         "updates": {
             "title": "2. 从 Github Pages 使用 DHConsole（或本地运行）",
-            "hosted": "使用托管版本",
-            "local": "本地运行（DHConsole 仓库）"
+            "hosted": "使用在线版本",
+            "local": "本地运行（DHConsole 仓库）",
+            "loading": "正在加载发布信息...",
+            "deployment": "最新发布时间：{{date}}"
         },
         "docs": {
             "text": "有关详细的设置说明，请访问",
