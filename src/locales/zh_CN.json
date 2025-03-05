@@ -28,7 +28,10 @@
             "title": "光锥",
             "name": "名称",
             "level": "等级",
-            "superimposition": "叠影"
+            "superimposition": "叠影",
+            "errors": {
+                "saveFailed": "保存光锥信息失败"
+            }
         },
         "relic": {
             "title": "遗器",
@@ -63,13 +66,21 @@
             "level": "等级",
             "eidolon": "星魂",
             "talentLevel": "行迹等级",
-            "path": "命途"
+            "path": "命途",
+            "errors": {
+                "saveFailed": "保存基本信息失败"
+            }
         },
         "pickPrompt": "选择角色查看详情",
         "list": {
             "addCharacter": "添加角色"
         },
-        "selectPrompt": "选择角色查看详情"
+        "selectPrompt": "选择角色查看详情",
+        "errors": {
+            "loadFailed": "加载角色失败",
+            "addFailed": "添加角色失败",
+            "detailsFailed": "加载角色详情失败"
+        }
     },
     "server": {
         "selectPlayer": "选择玩家",

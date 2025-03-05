@@ -13,6 +13,7 @@ import CommandService from '../../api/CommandService';
 import GameData from '../../store/gameData';
 import { useLanguageContext } from '../../store/languageContext';
 import { useTranslation } from 'react-i18next';
+import { useSnackbar } from '../../store/SnackbarContext';
 
 interface BasicInfoSectionProps {
     characterId: number;
@@ -23,6 +24,7 @@ interface BasicInfoSectionProps {
 export default function BasicInfoSection({ characterId, characterInfo, onUpdate }: BasicInfoSectionProps) {
     const { language } = useLanguageContext();
     const { t } = useTranslation();
+    const { showSnackbar } = useSnackbar();
     const [isEditing, setIsEditing] = React.useState(false);
     const [level, setLevel] = React.useState(characterInfo.level || 1);
     const [rank, setRank] = React.useState(characterInfo.rank || 0);
@@ -42,6 +44,7 @@ export default function BasicInfoSection({ characterId, characterInfo, onUpdate 
             setIsEditing(false);
         } catch (error) {
             console.error('Failed to save basic info:', error);
+            showSnackbar(t('character.basicInfo.errors.saveFailed'), 'error');
         }
     };
 

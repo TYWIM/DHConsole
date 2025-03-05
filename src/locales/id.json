@@ -28,7 +28,10 @@
             "title": "Kerucut Cahaya",
             "name": "Nama",
             "level": "Level",
-            "superimposition": "Superimposisi"
+            "superimposition": "Superimposisi",
+            "errors": {
+                "saveFailed": "Gagal menyimpan info Kerucut Cahaya"
+            }
         },
         "relic": {
             "title": "Relik",
@@ -63,13 +66,21 @@
             "level": "Level",
             "eidolon": "Eidolon",
             "talentLevel": "Level Bakat",
-            "path": "Jalur"
+            "path": "Jalur",
+            "errors": {
+                "saveFailed": "Gagal menyimpan info dasar"
+            }
         },
         "pickPrompt": "Pilih karakter untuk melihat detail",
         "list": {
             "addCharacter": "Tambah Karakter"
         },
-        "selectPrompt": "Pilih karakter untuk melihat detail"
+        "selectPrompt": "Pilih karakter untuk melihat detail",
+        "errors": {
+            "loadFailed": "Gagal memuat karakter",
+            "addFailed": "Gagal menambahkan karakter",
+            "detailsFailed": "Gagal memuat detail karakter"
+        }
     },
     "server": {
         "selectPlayer": "Pilih pemain",

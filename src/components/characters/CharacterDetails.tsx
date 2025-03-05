@@ -6,6 +6,7 @@ import LightConeSection from './LightConeSection';
 import RelicsSection from './RelicsSection';
 import CommandService from '../../api/CommandService';
 import { Character } from '../../api/CharacterInfo';
+import { useSnackbar } from '../../store/SnackbarContext';
 
 interface CharacterDetailsProps {
     characterId: number;
@@ -13,6 +14,7 @@ interface CharacterDetailsProps {
 
 export default function CharacterDetails({ characterId }: CharacterDetailsProps) {
     const { t } = useTranslation();
+    const { showSnackbar } = useSnackbar();
     const [characterInfo, setCharacterInfo] = React.useState<Character | null>(null);
 
     React.useEffect(() => {
@@ -25,6 +27,7 @@ export default function CharacterDetails({ characterId }: CharacterDetailsProps)
             setCharacterInfo(info);
         } catch (error) {
             console.error('Failed to load character info:', error);
+            showSnackbar(t('character.errors.detailsFailed'), 'error');
         }
     };
 

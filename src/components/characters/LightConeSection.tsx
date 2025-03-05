@@ -13,6 +13,7 @@ import CommandService from '../../api/CommandService';
 import GameData from '../../store/gameData';
 import { useLanguageContext } from '../../store/languageContext';
 import { useTranslation } from 'react-i18next';
+import { useSnackbar } from '../../store/SnackbarContext';
 
 interface LightConeSectionProps {
     characterId: number;
@@ -27,6 +28,7 @@ export default function LightConeSection({ characterId, characterInfo, onUpdate 
     const [equipRank, setEquipRank] = React.useState(characterInfo.equipRank || 1);
     const { language } = useLanguageContext();
     const { t } = useTranslation();
+    const { showSnackbar } = useSnackbar();
 
     React.useEffect(() => {
         setEquipId(characterInfo.equipId || 0);
@@ -42,6 +44,7 @@ export default function LightConeSection({ characterId, characterInfo, onUpdate 
             setIsEditing(false);
         } catch (error) {
             console.error('Failed to save light cone info:', error);
+            showSnackbar(t('character.lightCone.errors.saveFailed'), 'error');
         }
     };
 

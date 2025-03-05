@@ -25,10 +25,13 @@
     },
     "character": {
         "lightCone": {
-            "title": "빛의 원뿔",
+            "title": "광추",
             "name": "이름",
             "level": "레벨",
-            "superimposition": "중첩"
+            "superimposition": "중첩",
+            "errors": {
+                "saveFailed": "광추 정보 저장에 실패했습니다"
+            }
         },
         "relic": {
             "title": "유물",
@@ -69,6 +72,10 @@
         "selectPrompt": "상세 정보를 보려면 캐릭터를 선택하세요",
         "list": {
             "addCharacter": "캐릭터 추가"
+        },
+        "errors": {
+            "loadFailed": "캐릭터를 불러오지 못했습니다",
+            "addFailed": "캐릭터를 추가하지 못했습니다"
         }
     },
     "server": {

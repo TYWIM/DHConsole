@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import CommandService from '../../api/CommandService';
 import { useLanguageContext } from '../../store/languageContext';
 import { usePlayerContext } from '../../store/playerContext';
+import { useSnackbar } from '../../store/SnackbarContext';
 import GameData from '../../store/gameData';
 
 interface CharacterListProps {
@@ -22,6 +23,7 @@ interface CharacterListProps {
 
 export default function CharacterList({ selectedCharacterId, onCharacterSelect }: CharacterListProps) {
     const { t } = useTranslation();
+    const { showSnackbar } = useSnackbar();
     const [ownedCharacters, setOwnedCharacters] = React.useState<number[]>([]);
     const [newCharacterId, setNewCharacterId] = React.useState<number | ''>('');
     const [loading, setLoading] = React.useState<boolean>(false);
@@ -50,6 +52,7 @@ export default function CharacterList({ selectedCharacterId, onCharacterSelect }
             setOwnedCharacters(characters);
         } catch (error) {
             console.error('Failed to load characters:', error);
+            showSnackbar(t('character.errors.loadFailed'), 'error');
         }
     };
 
@@ -65,6 +68,7 @@ export default function CharacterList({ selectedCharacterId, onCharacterSelect }
             setNewCharacterId('');
         } catch (error) {
             console.error('Failed to add character:', error);
+            showSnackbar(t('character.errors.addFailed'), 'error');
         }
     };
 

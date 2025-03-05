@@ -28,7 +28,10 @@
             "title": "光円錐",
             "name": "名前",
             "level": "レベル",
-            "superimposition": "重ね合わせ"
+            "superimposition": "重ね合わせ",
+            "errors": {
+                "saveFailed": "光円錐の情報の保存に失敗しました"
+            }
         },
         "relic": {
             "title": "遺物",
@@ -61,15 +64,23 @@
         "basicInfo": {
             "title": "基本情報",
             "level": "レベル",
-            "eidolon": "命座",
-            "talentLevel": "天賦レベル",
-            "path": "運命"
+            "eidolon": "星魂",
+            "talentLevel": "行迹レベル",
+            "path": "命途",
+            "errors": {
+                "saveFailed": "基本情報の保存に失敗しました"
+            }
         },
         "pickPrompt": "詳細を表示するキャラクターを選択",
         "list": {
             "addCharacter": "キャラクターを追加"
         },
-        "selectPrompt": "詳細を表示するキャラクターを選択"
+        "selectPrompt": "詳細を表示するキャラクターを選択",
+        "errors": {
+            "loadFailed": "キャラクターの読み込みに失敗しました",
+            "addFailed": "キャラクターの追加に失敗しました",
+            "detailsFailed": "キャラクター詳細の読み込みに失敗しました"
+        }
     },
     "server": {
         "selectPlayer": "プレイヤーを選択",

@@ -28,7 +28,10 @@
             "title": "Cone de Luz",
             "name": "Nome",
             "level": "Nível",
-            "superimposition": "Sobreposição"
+            "superimposition": "Sobreposição",
+            "errors": {
+                "saveFailed": "Falha ao salvar informações do Cone de Luz"
+            }
         },
         "relic": {
             "title": "Relíquias",
@@ -63,13 +66,21 @@
             "level": "Nível",
             "eidolon": "Eidolon",
             "talentLevel": "Nível de Talento",
-            "path": "Caminho"
+            "path": "Caminho",
+            "errors": {
+                "saveFailed": "Falha ao salvar informações básicas"
+            }
         },
         "pickPrompt": "Escolha um personagem para ver detalhes",
         "list": {
             "addCharacter": "Adicionar Personagem"
         },
-        "selectPrompt": "Selecione um personagem para ver detalhes"
+        "selectPrompt": "Selecione um personagem para ver detalhes",
+        "errors": {
+            "loadFailed": "Falha ao carregar personagens",
+            "addFailed": "Falha ao adicionar personagem",
+            "detailsFailed": "Falha ao carregar detalhes do personagem"
+        }
     },
     "server": {
         "selectPlayer": "Selecionar jogador",

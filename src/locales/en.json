@@ -29,7 +29,10 @@
             "title": "Light Cone",
             "name": "Name",
             "level": "Level",
-            "superimposition": "Superimposition"
+            "superimposition": "Superimposition",
+            "errors": {
+                "saveFailed": "Failed to save light cone info"
+            }
         },
         "relic": {
             "title": "Relics",
@@ -64,13 +67,21 @@
             "level": "Level",
             "eidolon": "Eidolon",
             "talentLevel": "Talent Level",
-            "path": "Path"
+            "path": "Path",
+            "errors": {
+                "saveFailed": "Failed to save basic info"
+            }
         },
         "pickPrompt": "Pick a character to view details",
         "list": {
             "addCharacter": "Add Character"
         },
-        "selectPrompt": "Select a character to view details"
+        "selectPrompt": "Select a character to view details",
+        "errors": {
+            "loadFailed": "Failed to load characters",
+            "addFailed": "Failed to add character",
+            "detailsFailed": "Failed to load character details"
+        }
     },
     "server": {
         "selectPlayer": "Select a player",

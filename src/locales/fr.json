@@ -28,7 +28,10 @@
             "title": "Cône de Lumière",
             "name": "Nom",
             "level": "Niveau",
-            "superimposition": "Superposition"
+            "superimposition": "Superposition",
+            "errors": {
+                "saveFailed": "Échec de la sauvegarde des informations du Cône de Lumière"
+            }
         },
         "relic": {
             "title": "Relique",
@@ -63,13 +66,21 @@
             "level": "Niveau",
             "eidolon": "Éidolon",
             "talentLevel": "Niveau de Talent",
-            "path": "Voie"
+            "path": "Voie",
+            "errors": {
+                "saveFailed": "Échec de la sauvegarde des informations de base"
+            }
         },
         "pickPrompt": "Sélectionnez un personnage pour voir les détails",
         "list": {
             "addCharacter": "Ajouter un Personnage"
         },
-        "selectPrompt": "Sélectionnez un personnage pour voir les détails"
+        "selectPrompt": "Sélectionnez un personnage pour voir les détails",
+        "errors": {
+            "loadFailed": "Échec du chargement des personnages",
+            "addFailed": "Échec de l'ajout du personnage",
+            "detailsFailed": "Échec du chargement des détails du personnage"
+        }
     },
     "server": {
         "selectPlayer": "Sélectionner un joueur",

@@ -28,7 +28,10 @@
             "title": "Cono de Luz",
             "name": "Nombre",
             "level": "Nivel",
-            "superimposition": "Superposición"
+            "superimposition": "Superposición",
+            "errors": {
+                "saveFailed": "No se pudo guardar la información del Cono de Luz"
+            }
         },
         "relic": {
             "title": "Reliquias",
@@ -63,13 +66,21 @@
             "level": "Nivel",
             "eidolon": "Eidolon",
             "talentLevel": "Nivel de Talento",
-            "path": "Camino"
+            "path": "Sendero",
+            "errors": {
+                "saveFailed": "No se pudo guardar la información básica"
+            }
         },
         "pickPrompt": "Elige un personaje para ver detalles",
         "list": {
             "addCharacter": "Agregar Personaje"
         },
-        "selectPrompt": "Selecciona un personaje para ver detalles"
+        "selectPrompt": "Selecciona un personaje para ver detalles",
+        "errors": {
+            "loadFailed": "No se pudieron cargar los personajes",
+            "addFailed": "No se pudo añadir el personaje",
+            "detailsFailed": "No se pudieron cargar los detalles del personaje"
+        }
     },
     "server": {
         "selectPlayer": "Seleccionar jugador",

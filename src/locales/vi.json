@@ -25,10 +25,13 @@
     },
     "character": {
         "lightCone": {
-            "title": "Nón ánh sáng",
+            "title": "Nón Ánh Sáng",
             "name": "Tên",
             "level": "Cấp độ",
-            "superimposition": "Chồng chất"
+            "superimposition": "Chồng lớp",
+            "errors": {
+                "saveFailed": "Không thể lưu thông tin Nón Ánh Sáng"
+            }
         },
         "relic": {
             "title": "Di Vật",
@@ -61,15 +64,23 @@
         "basicInfo": {
             "title": "Thông Tin Cơ Bản",
             "level": "Cấp độ",
-            "eidolon": "Tinh linh",
-            "talentLevel": "Cấp độ kỹ năng",
-            "path": "Đường đi"
+            "eidolon": "Eidolon",
+            "talentLevel": "Cấp Thiên Phú",
+            "path": "Hành Trình",
+            "errors": {
+                "saveFailed": "Không thể lưu thông tin cơ bản"
+            }
         },
         "pickPrompt": "Chọn nhân vật để xem chi tiết",
         "list": {
             "addCharacter": "Thêm nhân vật"
         },
-        "selectPrompt": "Chọn nhân vật để xem chi tiết"
+        "selectPrompt": "Chọn nhân vật để xem chi tiết",
+        "errors": {
+            "loadFailed": "Không thể tải nhân vật",
+            "addFailed": "Không thể thêm nhân vật",
+            "detailsFailed": "Không thể tải chi tiết nhân vật"
+        }
     },
     "server": {
         "selectPlayer": "Chọn người chơi",

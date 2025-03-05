@@ -28,7 +28,10 @@
             "title": "光錐",
             "name": "名稱",
             "level": "等級",
-            "superimposition": "疊影"
+            "superimposition": "疊影",
+            "errors": {
+                "saveFailed": "儲存光錐資訊失敗"
+            }
         },
         "relic": {
             "title": "遺器",
@@ -59,17 +62,25 @@
             }
         },
         "basicInfo": {
-            "title": "基本信息",
+            "title": "基本資訊",
             "level": "等級",
             "eidolon": "星魂",
-            "talentLevel": "技能等級",
-            "path": "命途"
+            "talentLevel": "行跡等級",
+            "path": "命途",
+            "errors": {
+                "saveFailed": "儲存基本資訊失敗"
+            }
         },
         "pickPrompt": "選擇角色查看詳情",
         "list": {
             "addCharacter": "添加角色"
         },
-        "selectPrompt": "選擇角色查看詳情"
+        "selectPrompt": "選擇角色查看詳情",
+        "errors": {
+            "loadFailed": "載入角色失敗",
+            "addFailed": "新增角色失敗",
+            "detailsFailed": "載入角色詳情失敗"
+        }
     },
     "server": {
         "selectPlayer": "選擇玩家",

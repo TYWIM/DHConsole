@@ -90,8 +90,8 @@ const Missions = () => {
       return;
     }
     const results = GameData.getAllMainMissions(language);
-    const filteredResults = Object.entries(results).filter(([, value]) =>
-      value.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredResults = Object.entries(results).filter(([key, value]) =>
+      value.toLowerCase().includes(searchTerm.toLowerCase()) || key.toString().startsWith(searchTerm)
     );
     setSearchResults(Object.fromEntries(filteredResults));
   };
@@ -230,7 +230,7 @@ const Missions = () => {
             variant="outlined"
             placeholder={t('missions.labels.searchPlaceholder')}
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => setSearchTerm(e.target.value.trim())}
           />
           <IconButton onClick={handleSearch}>
             <SearchIcon />
