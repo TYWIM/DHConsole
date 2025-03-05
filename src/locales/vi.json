@@ -221,14 +221,14 @@
         },
         "labels": {
             "state": "Trạng thái",
-            "showDistantProps": "Hiển thị vật thể > 100m"
+            "showUnlockedProps": "Hiển thị vật thể đã mở khóa"
         },
         "messages": {
             "saveSuccess": "Đã lưu trạng thái vật thể thành công",
-            "saveError": "Lưu trạng thái vật thể thất bại",
+            "saveError": "Không thể lưu trạng thái vật thể",
             "undoSuccess": "Đã khôi phục trạng thái vật thể thành công",
-            "undoError": "Khôi phục trạng thái vật thể thất bại",
-            "noStateSelected": "Vui lòng chọn một trạng thái để lưu"
+            "undoError": "Không thể khôi phục trạng thái vật thể",
+            "noStateSelected": "Vui lòng chọn trạng thái để lưu"
         }
     },
     "welcome": {

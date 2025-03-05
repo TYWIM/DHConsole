@@ -216,19 +216,19 @@
     },
     "scene": {
         "sections": {
-            "propsNearMe": "Objets à Proximité",
-            "recentChanges": "Changements Récents"
+            "propsNearMe": "Accessoires à proximité",
+            "recentChanges": "Changements récents"
         },
         "labels": {
             "state": "État",
-            "showDistantProps": "Afficher les objets > 100m"
+            "showUnlockedProps": "Afficher les accessoires déverrouillés"
         },
         "messages": {
-            "saveSuccess": "État de l'objet enregistré avec succès",
-            "saveError": "Échec de l'enregistrement de l'état de l'objet",
-            "undoSuccess": "État de l'objet restauré avec succès",
-            "undoError": "Échec de la restauration de l'état de l'objet",
-            "noStateSelected": "Veuillez sélectionner un état à enregistrer"
+            "saveSuccess": "État de l'accessoire sauvegardé avec succès",
+            "saveError": "Échec de la sauvegarde de l'état de l'accessoire",
+            "undoSuccess": "État de l'accessoire restauré avec succès",
+            "undoError": "Échec de la restauration de l'état de l'accessoire",
+            "noStateSelected": "Veuillez sélectionner un état à sauvegarder"
         }
     },
     "welcome": {

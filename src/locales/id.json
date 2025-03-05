@@ -216,19 +216,19 @@
     },
     "scene": {
         "sections": {
-            "propsNearMe": "Objek di Sekitar",
+            "propsNearMe": "Prop di Sekitar",
             "recentChanges": "Perubahan Terbaru"
         },
         "labels": {
             "state": "Status",
-            "showDistantProps": "Tampilkan objek > 100m"
+            "showUnlockedProps": "Tampilkan prop yang sudah terbuka"
         },
         "messages": {
-            "saveSuccess": "Status objek berhasil disimpan",
-            "saveError": "Gagal menyimpan status objek",
-            "undoSuccess": "Status objek berhasil dikembalikan",
-            "undoError": "Gagal mengembalikan status objek",
-            "noStateSelected": "Silakan pilih status untuk menyimpan"
+            "saveSuccess": "Status prop berhasil disimpan",
+            "saveError": "Gagal menyimpan status prop",
+            "undoSuccess": "Status prop berhasil dikembalikan",
+            "undoError": "Gagal mengembalikan status prop",
+            "noStateSelected": "Silakan pilih status untuk disimpan"
         }
     },
     "welcome": {

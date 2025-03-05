@@ -222,7 +222,7 @@
         },
         "labels": {
             "state": "State",
-            "showDistantProps": "Show props > 100m"
+            "showUnlockedProps": "Show already unlocked props"
         },
         "messages": {
             "saveSuccess": "Prop state saved successfully",

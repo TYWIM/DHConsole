@@ -216,19 +216,19 @@
     },
     "scene": {
         "sections": {
-            "propsNearMe": "Objetos Próximos",
-            "recentChanges": "Alterações Recentes"
+            "propsNearMe": "Objetos próximos",
+            "recentChanges": "Mudanças recentes"
         },
         "labels": {
             "state": "Estado",
-            "showDistantProps": "Mostrar objetos > 100m"
+            "showUnlockedProps": "Mostrar objetos desbloqueados"
         },
         "messages": {
             "saveSuccess": "Estado do objeto salvo com sucesso",
             "saveError": "Falha ao salvar estado do objeto",
             "undoSuccess": "Estado do objeto restaurado com sucesso",
             "undoError": "Falha ao restaurar estado do objeto",
-            "noStateSelected": "Selecione um estado para salvar"
+            "noStateSelected": "Por favor, selecione um estado para salvar"
         }
     },
     "welcome": {

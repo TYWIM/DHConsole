@@ -221,14 +221,14 @@
         },
         "labels": {
             "state": "สถานะ",
-            "showDistantProps": "แสดงวัตถุ > 100m"
+            "showUnlockedProps": "แสดงวัตถุที่ปลดล็อคแล้ว"
         },
         "messages": {
             "saveSuccess": "บันทึกสถานะวัตถุสำเร็จ",
             "saveError": "ไม่สามารถบันทึกสถานะวัตถุ",
             "undoSuccess": "คืนค่าสถานะวัตถุสำเร็จ",
             "undoError": "ไม่สามารถคืนค่าสถานะวัตถุ",
-            "noStateSelected": "กรุณาเลือกสถานะที่จะบันทึก"
+            "noStateSelected": "กรุณาเลือกสถานะที่ต้องการบันทึก"
         }
     },
     "welcome": {

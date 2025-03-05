@@ -41,7 +41,7 @@ const Scene = () => {
     const [selectedState, setSelectedState] = useState<number | null>(null);
     const [recentChanges, setRecentChanges] = useState<PropStateChange[]>([]);
     const [waiting, setWaiting] = useState(false);
-    const [showDistantProps, setShowDistantProps] = useState(false);
+    const [showUnlockedProps, setShowUnlockedProps] = useState(false);
 
     const fetchProps = async () => {
         if (!isConnected) return;
@@ -113,10 +113,12 @@ const Scene = () => {
         }
     };
 
-    const filteredProps = props.filter(prop =>
-        (selectedTypes.length === 0 || selectedTypes.includes(prop.type)) &&
-        (showDistantProps || prop.distance < 100000)
-    );
+    const filteredProps = props.filter(prop => {
+        const shouldShowPerLockState = showUnlockedProps
+            || ['Locked', 'CheckPointDisable', 'TriggerDisable', 'ChestLocked', 'Hidden'].includes(prop.state)
+            || (prop.type === 'door' && prop.state === 'Closed');
+        return shouldShowPerLockState && (selectedTypes.length === 0 || selectedTypes.includes(prop.type));
+    });
 
     return (
         <Box display="flex" height="100%">
@@ -148,12 +150,12 @@ const Scene = () => {
 
                 <Box display="flex" alignItems="center" marginBottom={2}>
                     <Typography variant="body2">
-                        {t('scene.labels.showDistantProps')}
+                        {t('scene.labels.showUnlockedProps')}
                     </Typography>
                     <Switch
-                        checked={showDistantProps}
-                        onChange={(e) => setShowDistantProps(e.target.checked)}
-                        inputProps={{ 'aria-label': 'show distant props' }}
+                        checked={showUnlockedProps}
+                        onChange={(e) => setShowUnlockedProps(e.target.checked)}
+                        inputProps={{ 'aria-label': 'show unlocked props' }}
                     />
                 </Box>
 

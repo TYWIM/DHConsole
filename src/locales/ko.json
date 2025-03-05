@@ -216,19 +216,19 @@
     },
     "scene": {
         "sections": {
-            "propsNearMe": "근처 오브젝트",
+            "propsNearMe": "근처의 프롭",
             "recentChanges": "최근 변경사항"
         },
         "labels": {
             "state": "상태",
-            "showDistantProps": "100m 이상의 오브젝트 표시"
+            "showUnlockedProps": "잠금 해제된 프롭 표시"
         },
         "messages": {
-            "saveSuccess": "오브젝트 상태 저장 성공",
-            "saveError": "오브젝트 상태 저장 실패",
-            "undoSuccess": "오브젝트 상태 복원 성공",
-            "undoError": "오브젝트 상태 복원 실패",
-            "noStateSelected": "저장할 상태를 선택하십시오"
+            "saveSuccess": "프롭 상태가 저장되었습니다",
+            "saveError": "프롭 상태 저장에 실패했습니다",
+            "undoSuccess": "프롭 상태가 복원되었습니다",
+            "undoError": "프롭 상태 복원에 실패했습니다",
+            "noStateSelected": "저장할 상태를 선택해주세요"
         }
     },
     "welcome": {

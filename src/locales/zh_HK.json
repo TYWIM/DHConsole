@@ -216,19 +216,19 @@
     },
     "scene": {
         "sections": {
-            "propsNearMe": "道具（附近）",
-            "recentChanges": "狀態更改歷史"
+            "propsNearMe": "附近的道具",
+            "recentChanges": "最近的更改"
         },
         "labels": {
             "state": "狀態",
-            "showDistantProps": "顯示 > 100m 的道具"
+            "showUnlockedProps": "顯示已解鎖的道具"
         },
         "messages": {
             "saveSuccess": "道具狀態保存成功",
             "saveError": "保存道具狀態失敗",
             "undoSuccess": "道具狀態恢復成功",
             "undoError": "恢復道具狀態失敗",
-            "noStateSelected": "請選擇一個狀態來保存"
+            "noStateSelected": "請選擇要保存的狀態"
         }
     },
     "welcome": {

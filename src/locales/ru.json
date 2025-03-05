@@ -216,12 +216,12 @@
     },
     "scene": {
         "sections": {
-            "propsNearMe": "Объекты Поблизости",
-            "recentChanges": "Недавние Изменения"
+            "propsNearMe": "Объекты поблизости",
+            "recentChanges": "Недавние изменения"
         },
         "labels": {
             "state": "Состояние",
-            "showDistantProps": "Показать объекты > 100м"
+            "showUnlockedProps": "Показать разблокированные объекты"
         },
         "messages": {
             "saveSuccess": "Состояние объекта успешно сохранено",
