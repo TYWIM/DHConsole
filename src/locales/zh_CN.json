@@ -247,8 +247,10 @@
         "subtitle": "您管理 Danheng 服务器的强大工具",
         "important": "重要提示：开始之前",
         "plugin": {
-            "title": "1. 安装所需插件到 Plugins/",
-            "button": "获取 DHConsole 命令插件"
+            "title": "1. 安装所需插件到 Plugins/ 目录",
+            "button": "获取 DHConsole Commands 插件",
+            "loading": "正在加载插件信息...",
+            "version": "最新版本：{{version}}（发布日期：{{date}}）"
         },
         "updates": {
             "title": "2. 从 Github Pages 使用 DHConsole（或本地运行）",

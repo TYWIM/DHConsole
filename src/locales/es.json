@@ -248,7 +248,9 @@
         "important": "Importante: Antes de Comenzar",
         "plugin": {
             "title": "1. Instalar el Plugin Requerido en Plugins/",
-            "button": "Obtener el Plugin de Comandos de DHConsole"
+            "button": "Obtener Plugin DHConsole Commands",
+            "loading": "Cargando información del plugin...",
+            "version": "Última versión: {{version}} (Publicado: {{date}})"
         },
         "updates": {
             "title": "2. Usar DHConsole desde Github Pages (o ejecutar localmente)",

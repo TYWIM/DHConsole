@@ -247,8 +247,10 @@
         "subtitle": "Votre outil puissant pour la gestion du serveur Danheng",
         "important": "Important : Avant de Commencer",
         "plugin": {
-            "title": "1. Installer le plugin requis dans Plugins/",
-            "button": "Obtenir le plugin de commandes DHConsole"
+            "title": "1. Installer le Plugin Requis dans Plugins/",
+            "button": "Obtenir le Plugin DHConsole Commands",
+            "loading": "Chargement des informations du plugin...",
+            "version": "Dernière version : {{version}} (Publié le : {{date}})"
         },
         "updates": {
             "title": "2. Utiliser DHConsole depuis Github Pages (ou exécuter localement)",

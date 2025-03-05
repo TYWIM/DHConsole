@@ -248,7 +248,9 @@
         "important": "重要提示：開始之前",
         "plugin": {
             "title": "1. 安裝所需插件到 Plugins/ 目錄",
-            "button": "獲取 DHConsole 命令插件"
+            "button": "獲取 DHConsole Commands 插件",
+            "loading": "正在加載插件信息...",
+            "version": "最新版本：{{version}}（發布日期：{{date}}）"
         },
         "updates": {
             "title": "2. 從 Github Pages 使用 DHConsole（或本地運行）",

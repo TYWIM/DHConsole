@@ -18,7 +18,6 @@ import Grid from '@mui/material/Grid2';
 import { Male, Female } from '@mui/icons-material';
 import CommandService from '../api/CommandService';
 import { usePlayerContext } from '../store/playerContext';
-import { useLanguageContext } from '../store/languageContext';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from '../store/SnackbarContext';
 
@@ -27,10 +26,12 @@ export default function Account() {
   const [playerInfo, setPlayerInfo] = useState<{ level: number; gender: number }>({ level: 1, gender: 1 });
   const [editLevel, setEditLevel] = useState<string>('');
   const { playerUid, isConnected } = usePlayerContext();
-  const { language } = useLanguageContext();
   const { showSnackbar } = useSnackbar();
 
   useEffect(() => {
+    if (!isConnected) {
+      return;
+    }
     loadPlayerInfo();
   }, [playerUid, isConnected]);
 

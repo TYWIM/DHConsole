@@ -247,8 +247,10 @@
         "subtitle": "Alat kuat Anda untuk manajemen Server Danheng",
         "important": "Penting: Sebelum Anda Mulai",
         "plugin": {
-            "title": "1. Instal Plugin yang Diperlukan ke Plugins/",
-            "button": "Dapatkan Plugin Perintah DHConsole"
+            "title": "1. Pasang Plugin yang Diperlukan ke Plugins/",
+            "button": "Dapatkan Plugin DHConsole Commands",
+            "loading": "Memuat informasi plugin...",
+            "version": "Versi terbaru: {{version}} (Dirilis: {{date}})"
         },
         "updates": {
             "title": "2. Gunakan DHConsole dari Github Pages (atau jalankan secara lokal)",

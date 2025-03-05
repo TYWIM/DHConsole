@@ -249,7 +249,9 @@
         "important": "Important: Before You Begin",
         "plugin": {
             "title": "1. Install Required Plugin to Plugins/",
-            "button": "Get DHConsole Commands Plugin"
+            "button": "Get DHConsole Commands Plugin",
+            "loading": "Loading plugin info...",
+            "version": "Latest version: {{version}} (Released: {{date}})"
         },
         "updates": {
             "title": "2. Use DHConsole from Github Pages (or run locally)",

@@ -7,13 +7,42 @@ import {
   Stack,
   Link,
   Button,
+  CircularProgress,
 } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import PublicIcon from '@mui/icons-material/Public';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
+
+interface ReleaseInfo {
+  tag_name: string;
+  published_at: string;
+}
 
 export default function Index() {
   const { t } = useTranslation();
+  const [releaseInfo, setReleaseInfo] = React.useState<ReleaseInfo | null>(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchReleaseInfo = async () => {
+      try {
+        const response = await axios.get(
+          'https://api.github.com/repos/Anyrainel/DanhengPlugin-DHConsoleCommands/releases/latest'
+        );
+        setReleaseInfo({
+          tag_name: response.data.tag_name,
+          published_at: new Date(response.data.published_at).toLocaleString(),
+        });
+      } catch (err) {
+        console.error('Error fetching release info:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReleaseInfo();
+  }, []);
 
   return (
     <Container maxWidth="md">
@@ -73,6 +102,36 @@ export default function Index() {
               >
                 {t('welcome.plugin.button')}
               </Button>
+              {loading ? (
+                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                  <CircularProgress size={16} sx={{ mr: 1 }} />
+                  <Typography variant="body2" color="text.secondary">
+                    {t('welcome.plugin.loading')}
+                  </Typography>
+                </Box>
+              ) : releaseInfo && (
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mt: 1,
+                    animation: 'fadeIn 0.5s ease-out forwards',
+                    '@keyframes fadeIn': {
+                      from: {
+                        opacity: 0,
+                      },
+                      to: {
+                        opacity: 1,
+                      },
+                    },
+                  }}
+                >
+                  {t('welcome.plugin.version', {
+                    version: releaseInfo.tag_name,
+                    date: releaseInfo.published_at,
+                  })}
+                </Typography>
+              )}
             </Box>
 
             <Box>

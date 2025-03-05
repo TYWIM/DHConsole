@@ -248,7 +248,9 @@
         "important": "重要: 始める前に",
         "plugin": {
             "title": "1. 必要なプラグインを Plugins/ にインストール",
-            "button": "DHConsole コマンドプラグインを取得"
+            "button": "DHConsole Commands プラグインを入手",
+            "loading": "プラグイン情報を読み込み中...",
+            "version": "最新バージョン：{{version}}（リリース日：{{date}}）"
         },
         "updates": {
             "title": "2. Github Pages から DHConsole を使用 (またはローカルで実行)",

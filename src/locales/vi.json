@@ -247,8 +247,10 @@
         "subtitle": "Công cụ mạnh mẽ của bạn để quản lý máy chủ Danheng",
         "important": "Quan trọng: Trước khi bạn bắt đầu",
         "plugin": {
-            "title": "1. Cài đặt Plugin cần thiết vào Plugins/",
-            "button": "Nhận Plugin Lệnh DHConsole"
+            "title": "1. Cài đặt Plugin Cần thiết vào Plugins/",
+            "button": "Tải Plugin DHConsole Commands",
+            "loading": "Đang tải thông tin plugin...",
+            "version": "Phiên bản mới nhất: {{version}} (Phát hành: {{date}})"
         },
         "updates": {
             "title": "2. Sử dụng DHConsole từ Github Pages (hoặc chạy cục bộ)",

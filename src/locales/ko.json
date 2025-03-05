@@ -244,7 +244,9 @@
         "important": "중요: 시작하기 전에",
         "plugin": {
             "title": "1. 필요한 플러그인을 Plugins/에 설치",
-            "button": "DHConsole 명령어 플러그인 받기"
+            "button": "DHConsole Commands 플러그인 받기",
+            "loading": "플러그인 정보 로딩 중...",
+            "version": "최신 버전: {{version}} (출시일: {{date}})"
         },
         "updates": {
             "title": "2. Github Pages에서 DHConsole 사용 (또는 로컬에서 실행)",
