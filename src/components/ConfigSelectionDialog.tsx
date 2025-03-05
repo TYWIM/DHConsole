@@ -12,7 +12,8 @@ import {
     ListItemText,
     Typography,
     TextField,
-    Box
+    Box,
+    Stack
 } from '@mui/material';
 import { UploadFile, History, Key } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +24,7 @@ interface ConfigSelectionDialogProps {
     onClose: () => void;
     onSelectFile: () => void;
     onUseRecent: () => void;
-    onSaveManualKey: (key: string) => void;
+    onSaveManualKey: (key: string, port: number) => void;
     hasRecentConfig: boolean;
 }
 
@@ -38,17 +39,29 @@ const ConfigSelectionDialog = ({
     const { t } = useTranslation();
     const [showManualInput, setShowManualInput] = React.useState(false);
     const [manualKey, setManualKey] = React.useState('');
+    const [port, setPort] = React.useState('443');
 
     const handleSaveManualKey = () => {
-        onSaveManualKey(manualKey);
-        setShowManualInput(false);
-        setManualKey('');
+        const portNumber = parseInt(port, 10);
+        onSaveManualKey(manualKey, portNumber);
     };
 
     const handleClose = () => {
         setShowManualInput(false);
         setManualKey('');
+        setPort('443');
         onClose();
+    };
+
+    const handlePortChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        // Only allow numbers and empty string
+        if (value === '' || /^\d+$/.test(value)) {
+            const num = parseInt(value, 10);
+            if (!value || (num >= 1 && num <= 65535)) {
+                setPort(value);
+            }
+        }
     };
 
     return (
@@ -115,13 +128,25 @@ const ConfigSelectionDialog = ({
                 </List>
                 {showManualInput && (
                     <Box sx={{ mt: 2 }}>
-                        <TextField
-                            fullWidth
-                            label={t('server.configDialog.adminKeyInput')}
-                            value={manualKey}
-                            onChange={(e) => setManualKey(e.target.value)}
-                            autoFocus
-                        />
+                        <Stack spacing={2}>
+                            <TextField
+                                fullWidth
+                                label={t('server.configDialog.adminKeyInput')}
+                                value={manualKey}
+                                onChange={(e) => setManualKey(e.target.value)}
+                                autoFocus
+                            />
+                            <TextField
+                                label={t('server.configDialog.portInput')}
+                                value={port}
+                                onChange={handlePortChange}
+                                type="text"
+                                inputProps={{
+                                    inputMode: 'numeric',
+                                    pattern: '[0-9]*',
+                                }}
+                            />
+                        </Stack>
                     </Box>
                 )}
             </DialogContent>

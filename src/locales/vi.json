@@ -73,25 +73,28 @@
     },
     "server": {
         "selectPlayer": "Chọn người chơi",
-        "disconnected": "(Ngắt kết nối)",
+        "disconnected": "(đã ngắt kết nối)",
         "connect": "Kết nối",
         "connected": "Đã kết nối",
         "serverTime": "Thời gian máy chủ",
-        "memoryUsed": "Bộ nhớ đã sử dụng",
+        "memoryUsed": "Bộ nhớ đã dùng",
         "configDialog": {
-            "title": "Khóa Quản Trị",
-            "description": "Vui lòng chọn tệp config.json từ thư mục máy chủ riêng của bạn, hoặc nhập khóa quản trị thủ công. Điều này sẽ lưu khóa quản trị vào bộ nhớ cache của trình duyệt của bạn, để bạn có thể sử dụng lại sau. Nó sẽ không được lưu trữ ở bất kỳ nơi nào khác.",
-            "selectFile": "Chọn Tệp Cấu Hình (từ máy tính)",
+            "title": "Khóa quản trị",
+            "description": "Vui lòng chọn tệp config.json từ thư mục máy chủ riêng của bạn, hoặc nhập khóa quản trị thủ công. Điều này sẽ lưu khóa quản trị vào bộ nhớ đệm trình duyệt để sử dụng lại sau. Nó sẽ không được lưu trữ ở nơi nào khác.",
+            "selectFile": "Chọn tệp cấu hình (từ máy tính)",
             "selectFileDesc": "Chọn tệp config.json từ thư mục máy chủ riêng của bạn",
-            "enterKey": "Nhập Khóa Quản Trị Thủ Công",
-            "enterKeyDesc": "Nhập trực tiếp giá trị khóa quản trị. Tìm 'MuipServer' sau đó 'AdminKey' trong tệp config.json.",
-            "adminKeyInput": "Khóa Quản Trị",
-            "useRecent": "Sử Dụng Khóa Gần Đây (bộ nhớ cache của trình duyệt)",
+            "enterKey": "Nhập khóa quản trị thủ công",
+            "enterKeyDesc": "Nhập trực tiếp giá trị khóa. Tìm `MuipServer.AdminKey` và `HttpServer.Port` trong tệp config.json.",
+            "adminKeyInput": "Khóa quản trị",
+            "portInput": "Số cổng",
+            "useRecent": "Dùng khóa gần đây (bộ nhớ đệm trình duyệt)",
             "useRecentDesc": "Kết nối bằng khóa quản trị được sử dụng gần đây nhất"
         },
         "messages": {
-            "configError": "Lỗi tải tệp cấu hình. Vui lòng đảm bảo đó là tệp config.json hợp lệ với AdminKey",
-            "fetchError": "Không thể lấy thông tin máy chủ"
+            "configError": "Lỗi khi tải tệp cấu hình. Hãy đảm bảo đây là tệp config.json hợp lệ có AdminKey",
+            "fetchError": "Không thể lấy thông tin máy chủ",
+            "emptyKey": "Khóa quản trị không được để trống",
+            "invalidPort": "Số cổng phải nằm trong khoảng từ 1 đến 65535"
         }
     },
     "account": {

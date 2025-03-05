@@ -72,26 +72,29 @@
         "selectPrompt": "Selecione um personagem para ver detalhes"
     },
     "server": {
-        "selectPlayer": "Selecione um jogador",
+        "selectPlayer": "Selecionar jogador",
         "disconnected": "(desconectado)",
         "connect": "Conectar",
         "connected": "Conectado",
-        "serverTime": "Hora do Servidor",
-        "memoryUsed": "Memória Usada",
+        "serverTime": "Hora do servidor",
+        "memoryUsed": "Memória utilizada",
         "configDialog": {
-            "title": "Chave de Administrador",
-            "description": "Por favor, selecione um arquivo config.json do seu diretório de servidor privado ou insira a chave de admin manualmente. Isso salvará a chave de admin no cache do seu navegador, para que você possa reutilizá-la mais tarde. Ela não será armazenada em nenhum outro lugar.",
-            "selectFile": "Selecionar Arquivo de Configuração (do computador)",
+            "title": "Chave de administrador",
+            "description": "Por favor, selecione um arquivo config.json do seu diretório de servidor privado, ou insira a chave de administrador manualmente. Isso salvará a chave de administrador no cache do seu navegador para reutilização posterior. Não será armazenada em nenhum outro lugar.",
+            "selectFile": "Selecionar arquivo de configuração (do computador)",
             "selectFileDesc": "Escolha o arquivo config.json do seu diretório de servidor privado",
-            "enterKey": "Inserir Chave de Administrador Manualmente",
-            "enterKeyDesc": "Insira diretamente o valor da chave de administrador. Procure por 'MuipServer' e depois 'AdminKey' no arquivo config.json.",
-            "adminKeyInput": "Chave de Administrador",
-            "useRecent": "Usar Chave Recente (cache do navegador)",
-            "useRecentDesc": "Conectar usando a chave de admin mais recentemente utilizada"
+            "enterKey": "Inserir chave de administrador manualmente",
+            "enterKeyDesc": "Insira diretamente o valor da chave. Procure por `MuipServer.AdminKey` e `HttpServer.Port` no arquivo config.json.",
+            "adminKeyInput": "Chave de administrador",
+            "portInput": "Número da porta",
+            "useRecent": "Usar chave recente (cache do navegador)",
+            "useRecentDesc": "Conectar usando a última chave de administrador utilizada"
         },
         "messages": {
-            "configError": "Erro ao carregar o arquivo de configuração. Por favor, certifique-se de que é um config.json válido com AdminKey",
-            "fetchError": "Falha ao buscar informações do servidor"
+            "configError": "Erro ao carregar arquivo de configuração. Certifique-se de que é um config.json válido com AdminKey",
+            "fetchError": "Falha ao obter informações do servidor",
+            "emptyKey": "A chave de administrador não pode estar vazia",
+            "invalidPort": "O número da porta deve estar entre 1 e 65535"
         }
     },
     "account": {

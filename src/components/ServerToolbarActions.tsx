@@ -2,11 +2,23 @@ import React, { useEffect } from 'react';
 import { Button, Select, MenuItem, Typography, Box } from '@mui/material';
 import { ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import { useTranslation } from 'react-i18next';
-import MuipService from '../api/MuipService';
+import MuipService, { USE_SSL_STORAGE_KEY } from '../api/MuipService';
 import CommandService from '../api/CommandService';
 import { usePlayerContext } from '../store/playerContext';
 import { useSnackbar } from '../store/SnackbarContext';
 import ConfigSelectionDialog from './ConfigSelectionDialog';
+
+// Add type declaration for File System Access API
+declare global {
+  interface Window {
+    showOpenFilePicker(options?: {
+      types?: Array<{
+        description: string;
+        accept: Record<string, string[]>;
+      }>;
+    }): Promise<FileSystemFileHandle[]>;
+  }
+}
 
 interface ServerState {
   players: { uid: number; name: string }[];
@@ -15,6 +27,7 @@ interface ServerState {
 }
 
 const ADMIN_KEY_STORAGE_KEY = 'muip-admin-key';
+const PORT_STORAGE_KEY = 'muip-port';
 
 const ServerToolbarActions = () => {
   const { t } = useTranslation();
@@ -80,10 +93,21 @@ const ServerToolbarActions = () => {
       localStorage.setItem(ADMIN_KEY_STORAGE_KEY, adminKey);
       MuipService.setAdminKey(adminKey);
 
-      // Set SSL to true if the config file is from a private server
+      // Set SSL flag from config
       const useSSL = config?.HttpServer?.UseSSL;
       if (useSSL != null) {
+        localStorage.setItem(USE_SSL_STORAGE_KEY, useSSL.toString());
         MuipService.setUseSSL(useSSL);
+      }
+
+      // Set port if specified in config
+      const port = config?.HttpServer?.Port;
+      if (port != null && port >= 1 && port <= 65535) {
+        localStorage.setItem(PORT_STORAGE_KEY, port.toString());
+        MuipService.setPort(port);
+      } else {
+        localStorage.setItem(PORT_STORAGE_KEY, '443');
+        MuipService.setPort(443);
       }
 
       setConfigDialogOpen(false);
@@ -95,16 +119,35 @@ const ServerToolbarActions = () => {
 
   const handleUseRecent = () => {
     const adminKey = localStorage.getItem(ADMIN_KEY_STORAGE_KEY);
+    const port = parseInt(localStorage.getItem(PORT_STORAGE_KEY) || '443', 10);
+    const useSSL = localStorage.getItem(USE_SSL_STORAGE_KEY);
+
     if (adminKey) {
       MuipService.setAdminKey(adminKey);
+      MuipService.setPort(port);
+      if (useSSL !== null) {
+        MuipService.setUseSSL(useSSL === 'true');
+      }
       setConfigDialogOpen(false);
       fetchServerInfo();
     }
   };
 
-  const handleSaveManualKey = (adminKey: string) => {
+  const handleSaveManualKey = (adminKey: string, port: number) => {
+    if (!adminKey.trim()) {
+      showSnackbar(t('server.messages.emptyKey'), 'error');
+      return;
+    }
+
+    if (port < 1 || port > 65535 || isNaN(port)) {
+      showSnackbar(t('server.messages.invalidPort'), 'error');
+      return;
+    }
+
     localStorage.setItem(ADMIN_KEY_STORAGE_KEY, adminKey);
+    localStorage.setItem(PORT_STORAGE_KEY, port.toString());
     MuipService.setAdminKey(adminKey);
+    MuipService.setPort(port);
     setConfigDialogOpen(false);
     fetchServerInfo();
   };

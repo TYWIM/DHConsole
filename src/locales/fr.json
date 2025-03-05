@@ -72,26 +72,29 @@
         "selectPrompt": "Sélectionnez un personnage pour voir les détails"
     },
     "server": {
-        "selectPlayer": "Sélectionnez un joueur",
+        "selectPlayer": "Sélectionner un joueur",
         "disconnected": "(déconnecté)",
         "connect": "Connecter",
         "connected": "Connecté",
-        "serverTime": "Heure du Serveur",
-        "memoryUsed": "Mémoire Utilisée",
+        "serverTime": "Heure du serveur",
+        "memoryUsed": "Mémoire utilisée",
         "configDialog": {
-            "title": "Clé Admin",
-            "description": "Veuillez sélectionner un fichier config.json depuis votre répertoire de serveur privé, ou entrer la clé admin manuellement. Cela enregistrera la clé admin dans le cache de votre navigateur, afin que vous puissiez la réutiliser plus tard. Elle ne sera stockée nulle part ailleurs.",
+            "title": "Clé d'administrateur",
+            "description": "Veuillez sélectionner un fichier config.json depuis votre répertoire de serveur privé, ou saisir manuellement la clé d'administrateur. Cela sauvegardera la clé d'administrateur dans le cache de votre navigateur pour une réutilisation ultérieure. Elle ne sera stockée nulle part ailleurs.",
             "selectFile": "Sélectionner le fichier de configuration (depuis l'ordinateur)",
-            "selectFileDesc": "Sélectionnez le fichier config.json depuis votre répertoire de serveur privé",
-            "enterKey": "Entrer la clé admin manuellement",
-            "enterKeyDesc": "Entrez directement la valeur de la clé admin. Recherchez 'MuipServer' puis 'AdminKey' dans le fichier config.json",
-            "adminKeyInput": "Clé Admin",
+            "selectFileDesc": "Choisissez le fichier config.json depuis votre répertoire de serveur privé",
+            "enterKey": "Saisir la clé d'administrateur manuellement",
+            "enterKeyDesc": "Saisissez directement la valeur de la clé. Recherchez `MuipServer.AdminKey` et `HttpServer.Port` dans le fichier config.json.",
+            "adminKeyInput": "Clé d'administrateur",
+            "portInput": "Numéro de port",
             "useRecent": "Utiliser la clé récente (cache du navigateur)",
-            "useRecentDesc": "Connectez-vous en utilisant la clé admin la plus récemment utilisée"
+            "useRecentDesc": "Se connecter en utilisant la dernière clé d'administrateur utilisée"
         },
         "messages": {
-            "configError": "Erreur lors du chargement du fichier de configuration. Veuillez vous assurer qu'il s'agit d'un config.json valide avec AdminKey",
-            "fetchError": "Échec de la récupération des informations du serveur"
+            "configError": "Erreur lors du chargement du fichier de configuration. Assurez-vous qu'il s'agit d'un fichier config.json valide avec AdminKey",
+            "fetchError": "Échec de la récupération des informations du serveur",
+            "emptyKey": "La clé d'administrateur ne peut pas être vide",
+            "invalidPort": "Le numéro de port doit être compris entre 1 et 65535"
         }
     },
     "account": {

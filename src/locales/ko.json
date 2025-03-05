@@ -73,25 +73,28 @@
     },
     "server": {
         "selectPlayer": "플레이어 선택",
-        "disconnected": "(연결 끊김)",
+        "disconnected": "(연결 안됨)",
         "connect": "연결",
         "connected": "연결됨",
         "serverTime": "서버 시간",
         "memoryUsed": "메모리 사용량",
         "configDialog": {
             "title": "관리자 키",
-            "description": "개인 서버 디렉토리에서 config.json 파일을 선택하거나 관리자 키를 수동으로 입력하세요. 이렇게 하면 관리자 키가 브라우저 캐시에 저장되어 나중에 재사용할 수 있습니다. 다른 곳에는 저장되지 않습니다.",
-            "selectFile": "구성 파일 선택 (컴퓨터에서)",
-            "selectFileDesc": "개인 서버 디렉토리에서 config.json 파일을 선택하세요",
+            "description": "개인 서버 디렉토리에서 config.json 파일을 선택하거나 관리자 키를 수동으로 입력하세요. 관리자 키는 브라우저 캐시에 저장되어 나중에 재사용할 수 있습니다. 다른 곳에는 저장되지 않습니다.",
+            "selectFile": "설정 파일 선택 (컴퓨터에서)",
+            "selectFileDesc": "개인 서버 디렉토리에서 config.json 파일 선택",
             "enterKey": "관리자 키 수동 입력",
-            "enterKeyDesc": "관리자 키 값을 직접 입력하세요. config.json 파일에서 'MuipServer' 다음에 'AdminKey'를 찾으세요.",
+            "enterKeyDesc": "관리자 키 값을 직접 입력합니다. config.json 파일에서 `MuipServer.AdminKey`와 `HttpServer.Port`를 확인하세요.",
             "adminKeyInput": "관리자 키",
+            "portInput": "포트 번호",
             "useRecent": "최근 키 사용 (브라우저 캐시)",
             "useRecentDesc": "가장 최근에 사용한 관리자 키로 연결"
         },
         "messages": {
-            "configError": "구성 파일 로드 오류. AdminKey가 포함된 유효한 config.json인지 확인하세요",
-            "fetchError": "서버 정보를 가져오지 못했습니다"
+            "configError": "설정 파일 로드 오류. AdminKey가 포함된 유효한 config.json인지 확인하세요",
+            "fetchError": "서버 정보를 가져오는데 실패했습니다",
+            "emptyKey": "관리자 키를 입력하세요",
+            "invalidPort": "포트 번호는 1에서 65535 사이여야 합니다"
         }
     },
     "account": {

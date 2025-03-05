@@ -73,25 +73,28 @@
     },
     "server": {
         "selectPlayer": "选择玩家",
-        "disconnected": "(未连接)",
+        "disconnected": "（未连接）",
         "connect": "连接",
         "connected": "已连接",
         "serverTime": "服务器时间",
         "memoryUsed": "内存使用",
         "configDialog": {
-            "title": "管理密钥",
-            "description": "请选择来自您私人服务器目录的config.json文件，或手动输入管理密钥。这将把管理密钥保存到您的浏览器缓存中，以便您以后可以重用。它不会存储在其他地方。",
+            "title": "管理员密钥",
+            "description": "请从您的私人服务器目录中选择 config.json 文件，或手动输入管理员密钥。这将把管理员密钥保存到您的浏览器缓存中，以便以后重复使用。它不会存储在其他任何地方。",
             "selectFile": "选择配置文件（从计算机）",
-            "selectFileDesc": "选择您私人服务器目录中的config.json文件",
-            "enterKey": "手动输入管理密钥",
-            "enterKeyDesc": "直接输入管理密钥值。您可以在config.json文件中查找'MuipServer'下的'AdminKey'字符串。",
-            "adminKeyInput": "管理密钥",
+            "selectFileDesc": "从您的私人服务器目录中选择 config.json 文件",
+            "enterKey": "手动输入管理员密钥",
+            "enterKeyDesc": "直接输入管理员密钥值。在 config.json 文件中查找 `MuipServer.AdminKey` 和 `HttpServer.Port`。",
+            "adminKeyInput": "管理员密钥",
+            "portInput": "端口号",
             "useRecent": "使用最近的密钥（浏览器缓存）",
-            "useRecentDesc": "使用最近使用的管理员密钥进行连接"
+            "useRecentDesc": "使用最近使用的管理员密钥连接"
         },
         "messages": {
-            "configError": "加载配置文件出错。请确保它是一个有效的包含AdminKey的config.json文件",
-            "fetchError": "获取服务器信息失败"
+            "configError": "加载配置文件时出错。请确保它是带有 AdminKey 的有效 config.json",
+            "fetchError": "获取服务器信息失败",
+            "emptyKey": "管理员密钥不能为空",
+            "invalidPort": "端口号必须在 1 到 65535 之间"
         }
     },
     "account": {
@@ -265,7 +268,7 @@
             },
             "step4": {
                 "title": "步骤 4：将 DHConsole 连接到 DanhengServer",
-                "description": "点击 DHConsole 右上角的“连接”按钮"
+                "description": "点击 DHConsole 右上角的'连接'按钮"
             }
         }
     }

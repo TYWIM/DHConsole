@@ -76,22 +76,25 @@
         "disconnected": "(terputus)",
         "connect": "Hubungkan",
         "connected": "Terhubung",
-        "serverTime": "Waktu Server",
-        "memoryUsed": "Memori Digunakan",
+        "serverTime": "Waktu server",
+        "memoryUsed": "Penggunaan memori",
         "configDialog": {
-            "title": "Kunci Admin",
-            "description": "Silakan pilih file config.json dari direktori server pribadi Anda, atau masukkan kunci admin secara manual. Ini akan menyimpan kunci admin ke cache browser Anda, sehingga Anda dapat menggunakannya kembali nanti. Itu tidak akan disimpan di tempat lain.",
-            "selectFile": "Pilih File Konfigurasi (dari komputer)",
+            "title": "Kunci admin",
+            "description": "Silakan pilih file config.json dari direktori server pribadi Anda, atau masukkan kunci admin secara manual. Ini akan menyimpan kunci admin di cache browser Anda untuk digunakan kembali nanti. Tidak akan disimpan di tempat lain.",
+            "selectFile": "Pilih file konfigurasi (dari komputer)",
             "selectFileDesc": "Pilih file config.json dari direktori server pribadi Anda",
-            "enterKey": "Masukkan Kunci Admin Secara Manual",
-            "enterKeyDesc": "Masukkan nilai kunci admin secara langsung. Cari 'MuipServer' lalu 'AdminKey' di file config.json.",
-            "adminKeyInput": "Kunci Admin",
-            "useRecent": "Gunakan Kunci Terbaru (cache browser)",
-            "useRecentDesc": "Hubungkan menggunakan kunci admin yang paling baru digunakan"
+            "enterKey": "Masukkan kunci admin secara manual",
+            "enterKeyDesc": "Masukkan nilai kunci admin secara langsung. Cari `MuipServer.AdminKey` dan `HttpServer.Port` di file config.json.",
+            "adminKeyInput": "Kunci admin",
+            "portInput": "Nomor port",
+            "useRecent": "Gunakan kunci terbaru (cache browser)",
+            "useRecentDesc": "Hubungkan menggunakan kunci admin yang terakhir digunakan"
         },
         "messages": {
-            "configError": "Kesalahan memuat file konfigurasi. Pastikan itu adalah config.json yang valid dengan AdminKey",
-            "fetchError": "Gagal mengambil informasi server"
+            "configError": "Gagal memuat file konfigurasi. Pastikan ini adalah config.json yang valid dengan AdminKey",
+            "fetchError": "Gagal mengambil informasi server",
+            "emptyKey": "Kunci admin tidak boleh kosong",
+            "invalidPort": "Nomor port harus antara 1 dan 65535"
         }
     },
     "account": {

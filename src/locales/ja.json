@@ -73,25 +73,28 @@
     },
     "server": {
         "selectPlayer": "プレイヤーを選択",
-        "disconnected": "(未接続)",
-        "connect": "接続する",
+        "disconnected": "（未接続）",
+        "connect": "接続",
         "connected": "接続済み",
         "serverTime": "サーバー時間",
         "memoryUsed": "メモリ使用量",
         "configDialog": {
-            "title": "管理キー",
-            "description": "プライベートサーバーディレクトリからconfig.jsonファイルを選択するか、管理キーを手動で入力してください。これにより、管理キーがブラウザのキャッシュに保存され、後で再利用できます。他の場所には保存されません。",
-            "selectFile": "設定ファイルを選択（コンピュータから）",
-            "selectFileDesc": "プライベートサーバーディレクトリからconfig.jsonファイルを選択してください",
-            "enterKey": "管理キーを手動で入力",
-            "enterKeyDesc": "管理キーの値を直接入力します。config.jsonファイルの中の'MuipServer'、次に'AdminKey'を探してください。",
-            "adminKeyInput": "管理キー",
-            "useRecent": "最近使用したキーを使用（ブラウザキャッシュ）",
-            "useRecentDesc": "最も最近使用した管理キーを使用して接続します"
+            "title": "管理者キー",
+            "description": "プライベートサーバーディレクトリから config.json ファイルを選択するか、管理者キーを手動で入力してください。管理者キーはブラウザのキャッシュに保存され、後で再利用できます。他の場所には保存されません。",
+            "selectFile": "設定ファイルを選択（コンピューターから）",
+            "selectFileDesc": "プライベートサーバーディレクトリから config.json ファイルを選択",
+            "enterKey": "管理者キーを手動で入力",
+            "enterKeyDesc": "管理者キーの値を直接入力します。config.json ファイルで `MuipServer.AdminKey` と `HttpServer.Port` を確認してください。",
+            "adminKeyInput": "管理者キー",
+            "portInput": "ポート番号",
+            "useRecent": "最近のキーを使用（ブラウザキャッシュ）",
+            "useRecentDesc": "最後に使用した管理者キーで接続"
         },
         "messages": {
-            "configError": "設定ファイルの読み込みエラー。AdminKeyを含む有効なconfig.jsonであることを確認してください",
-            "fetchError": "サーバー情報の取得に失敗しました"
+            "configError": "設定ファイルの読み込みエラー。AdminKey を含む有効な config.json であることを確認してください",
+            "fetchError": "サーバー情報の取得に失敗しました",
+            "emptyKey": "管理者キーを入力してください",
+            "invalidPort": "ポート番号は1から65535の間で指定してください"
         }
     },
     "account": {

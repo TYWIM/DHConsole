@@ -1,13 +1,13 @@
 import axios from 'axios';
 import JSEncrypt from 'jsencrypt';
 
-const API_BASE_URL = 'http://127.0.0.1:443/muip';
-const API_BASE_URL_SSL = 'https://127.0.0.1:443/muip';
+export const USE_SSL_STORAGE_KEY = 'muip-use-ssl';
 
 class MuipService {
   private static readonly MIN_CALL_INTERVAL: number = 50;
   private static adminKey: string | null = null;
   private static useSSL: boolean = true;
+  private static port: number = 443;
   private static lastCallTimestamp: number = 0;
   private static callQueue: Promise<void> = Promise.resolve();
   private static rsaPublicKey: string = '';
@@ -20,6 +20,10 @@ class MuipService {
 
   static setAdminKey(key: string) {
     this.adminKey = key;
+  }
+
+  static setPort(port: number) {
+    this.port = port;
   }
 
   /**
@@ -99,7 +103,8 @@ class MuipService {
   }
 
   private static getBaseUrl(): string {
-    return this.useSSL ? API_BASE_URL_SSL : API_BASE_URL;
+    const protocol = this.useSSL ? 'https' : 'http';
+    return `${protocol}://127.0.0.1:${this.port}/muip`;
   }
 
   private static async ensureValidSession(): Promise<void> {
@@ -122,6 +127,8 @@ class MuipService {
       if (response.data.code !== 0) {
         throw new Error(response.data.message);
       }
+      // Store the successful SSL setting
+      localStorage.setItem(USE_SSL_STORAGE_KEY, useSSL.toString());
       return response.data.data;
     };
 

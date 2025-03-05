@@ -85,14 +85,17 @@
             "selectFile": "Select Config File (from computer)",
             "selectFileDesc": "Choose the config.json file from your private server directory",
             "enterKey": "Enter Admin Key Manually",
-            "enterKeyDesc": "Directly input the admin key value. Look for 'MuipServer' then 'AdminKey' in the config.json file.",
+            "enterKeyDesc": "Directly input the admin key value. Look for `MuipServer.AdminKey` and `HttpServer.Port` in the config.json file.",
             "adminKeyInput": "Admin Key",
+            "portInput": "Port Number",
             "useRecent": "Use Recent Key (browser cache)",
             "useRecentDesc": "Connect using the most recently used admin key"
         },
         "messages": {
             "configError": "Error loading config file. Please make sure it's a valid config.json with AdminKey",
-            "fetchError": "Failed to fetch server information"
+            "fetchError": "Failed to fetch server information",
+            "emptyKey": "Admin key cannot be empty",
+            "invalidPort": "Port number must be between 1 and 65535"
         }
     },
     "account": {

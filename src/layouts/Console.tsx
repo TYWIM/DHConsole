@@ -4,19 +4,22 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { PageContainer } from '@toolpad/core/PageContainer';
 import ServerToolbarActions from '../components/ServerToolbarActions';
 import { PlayerProvider } from '../store/playerContext';
-import { LanguageProvider } from '../store/languageContext';
 import LanguageSidebarFooter from '../components/LanguageSidebarFooter';
+import { DialogsProvider } from '@toolpad/core/useDialogs';
+import { SnackbarProvider } from '../store/SnackbarContext';
 
 export default function Layout() {
   return (
-    <LanguageProvider>
-      <PlayerProvider>
-        <DashboardLayout slots={{ toolbarActions: ServerToolbarActions, sidebarFooter: LanguageSidebarFooter }}>
-          <PageContainer>
-            <Outlet />
-          </PageContainer>
-        </DashboardLayout>
-      </PlayerProvider>
-    </LanguageProvider>
+    <DialogsProvider>
+      <SnackbarProvider>
+        <PlayerProvider>
+          <DashboardLayout slots={{ toolbarActions: ServerToolbarActions, sidebarFooter: LanguageSidebarFooter }}>
+            <PageContainer>
+              <Outlet />
+            </PageContainer>
+          </DashboardLayout>
+        </PlayerProvider>
+      </SnackbarProvider>
+    </DialogsProvider>
   );
 }

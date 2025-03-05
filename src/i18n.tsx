@@ -13,6 +13,16 @@ import ruTranslation from './locales/ru.json';
 import thTranslation from './locales/th.json';
 import viTranslation from './locales/vi.json';
 
+export const LANGUAGE_STORAGE_KEY = 'app-language-preference';
+const getInitialLanguage = () => {
+    try {
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'en';
+    } catch (error) {
+        console.warn('Failed to read language preference from localStorage:', error);
+        return 'en';
+    }
+};
+
 i18n
     .use(initReactI18next)
     .init({
@@ -30,7 +40,7 @@ i18n
             th: { translation: thTranslation },
             vi: { translation: viTranslation },
         },
-        lng: 'en',
+        lng: getInitialLanguage(),
         fallbackLng: 'en',
         debug: false,
         interpolation: {
