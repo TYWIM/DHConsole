@@ -91,7 +91,8 @@ const Missions = () => {
     }
     const results = GameData.getAllMainMissions(language);
     const filteredResults = Object.entries(results).filter(([key, value]) =>
-      value.toLowerCase().includes(searchTerm.toLowerCase()) || key.toString().startsWith(searchTerm)
+      value.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (searchTerm.length >= 6 && !isNaN(Number(searchTerm)) && key.toString().startsWith(searchTerm))
     );
     setSearchResults(Object.fromEntries(filteredResults));
   };
