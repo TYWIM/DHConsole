@@ -13,14 +13,14 @@ const LanguageContext = createContext<LanguageContextState | undefined>(undefine
 // Create a provider component
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [language, setLanguageState] = useState<string>(() => {
-        // Try to get the language from localStorage, fallback to 'en'
+        // Try to get the language from localStorage, fallback to 'zh_CN'
         try {
             const storedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-            return storedLanguage || 'en';
+            return storedLanguage || 'zh_CN'; // 修改默认语言为中文
         } catch (error) {
-            // In case of any localStorage errors, fallback to 'en'
+            // In case of any localStorage errors, fallback to 'zh_CN'
             console.warn('Failed to read language preference from localStorage:', error);
-            return 'en';
+            return 'zh_CN'; // 修改默认语言为中文
         }
     });
 
@@ -48,4 +48,4 @@ export const useLanguageContext = (): LanguageContextState => {
         throw new Error('useLanguageContext must be used within a LanguageProvider');
     }
     return context;
-}; 
+};
