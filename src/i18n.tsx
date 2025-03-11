@@ -16,10 +16,10 @@ import viTranslation from './locales/vi.json';
 export const LANGUAGE_STORAGE_KEY = 'app-language-preference';
 const getInitialLanguage = () => {
     try {
-        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'en';
+        return localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'zh_CN'; // 修改默认语言为中文
     } catch (error) {
         console.warn('Failed to read language preference from localStorage:', error);
-        return 'en';
+        return 'zh_CN'; // 修改默认语言为中文
     }
 };
 
@@ -49,4 +49,4 @@ i18n
         defaultNS: 'translation',
     });
 
-export default i18n; 
+export default i18n;
