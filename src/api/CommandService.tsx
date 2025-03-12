@@ -1,4 +1,6 @@
+// 删除重复的导入语句，只保留一个
 import MuipService from './MuipService';
+
 import { Character, Relic, MAIN_AFFIXES, SUB_AFFIXES } from './CharacterInfo';
 import { Prop } from './PropInfo';
 
@@ -449,5 +451,7 @@ class CommandService {
   }
 
 }
+
+export default CommandService;
 
 export default CommandService;
