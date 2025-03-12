@@ -99,7 +99,12 @@
             "adminKeyInput": "管理员密钥",
             "portInput": "端口号",
             "useRecent": "使用最近的密钥（浏览器缓存）",
-            "useRecentDesc": "使用最近使用的管理员密钥连接"
+            "useRecentDesc": "使用最近使用的管理员密钥连接",
+            "remoteConnection": "远程连接",
+            "remoteHost": "远程主机地址",
+            "remoteDesc": "输入远程服务器的主机名或IP地址",
+            "useSSL": "使用SSL连接",
+            "sslDesc": "启用HTTPS连接（适用于配置了SSL的服务器）"
         },
         "messages": {
             "configError": "加载配置文件时出错。请确保它是带有 AdminKey 的有效 config.json",
