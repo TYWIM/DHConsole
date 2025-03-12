@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Dialog,
     DialogTitle,
@@ -13,96 +13,60 @@ import {
     Typography,
     TextField,
     Box,
-    Stack
+    Stack,
+    FormControlLabel,
+    Switch
 } from '@mui/material';
-import { UploadFile, History, Key } from '@mui/icons-material';
+import { UploadFile, History, Key, Public } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
-import { alpha } from '@mui/material/styles';
 
 interface ConfigSelectionDialogProps {
     open: boolean;
     onClose: () => void;
     onSelectFile: () => void;
     onUseRecent: () => void;
-    onSaveManualKey: (key: string, port: number) => void;
+    onSaveManualKey: (adminKey: string, port: number) => void;
     hasRecentConfig: boolean;
+    // 添加新的props
+    isRemoteConnection?: boolean;
+    remoteHost?: string;
+    onRemoteToggle?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onRemoteHostChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    useSSL?: boolean;
+    onSSLToggle?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ConfigSelectionDialog = ({
+export default function ConfigSelectionDialog({
     open,
     onClose,
     onSelectFile,
     onUseRecent,
     onSaveManualKey,
-    hasRecentConfig
-}: ConfigSelectionDialogProps) => {
+    hasRecentConfig,
+    isRemoteConnection = false,
+    remoteHost = '',
+    onRemoteToggle,
+    onRemoteHostChange,
+    useSSL = false,
+    onSSLToggle
+}: ConfigSelectionDialogProps) {
     const { t } = useTranslation();
-    const [showManualInput, setShowManualInput] = React.useState(false);
-    const [manualKey, setManualKey] = React.useState('');
-    const [port, setPort] = React.useState('443');
+    const [adminKey, setAdminKey] = useState('');
+    const [port, setPort] = useState('443');
 
-    const handleSaveManualKey = () => {
-        const portNumber = parseInt(port, 10);
-        onSaveManualKey(manualKey, portNumber);
-    };
-
-    const handleClose = () => {
-        setShowManualInput(false);
-        setManualKey('');
-        setPort('443');
-        onClose();
-    };
-
-    const handlePortChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        // Only allow numbers and empty string
-        if (value === '' || /^\d+$/.test(value)) {
-            const num = parseInt(value, 10);
-            if (!value || (num >= 1 && num <= 65535)) {
-                setPort(value);
-            }
-        }
+    const handleSave = () => {
+        onSaveManualKey(adminKey, parseInt(port, 10));
     };
 
     return (
-        <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+        <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
             <DialogTitle>{t('server.configDialog.title')}</DialogTitle>
             <DialogContent>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography variant="body2" sx={{ mb: 2 }}>
                     {t('server.configDialog.description')}
                 </Typography>
+
                 <List>
-                    {hasRecentConfig && (
-                        <ListItem
-                            disablePadding
-                            sx={{
-                                mb: 2,
-                                backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.08),
-                                borderRadius: 1,
-                                border: (theme) => `1px solid ${alpha(theme.palette.primary.main, 0.2)}`
-                            }}
-                        >
-                            <ListItemButton
-                                onClick={onUseRecent}
-                                sx={{
-                                    '&:hover': {
-                                        backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.12),
-                                    }
-                                }}
-                            >
-                                <ListItemIcon>
-                                    <History />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={t('server.configDialog.useRecent')}
-                                    secondary={t('server.configDialog.useRecentDesc')}
-                                    primaryTypographyProps={{
-                                        fontWeight: 'bold'
-                                    }}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    )}
                     <ListItem disablePadding>
                         <ListItemButton onClick={onSelectFile}>
                             <ListItemIcon>
@@ -114,55 +78,93 @@ const ConfigSelectionDialog = ({
                             />
                         </ListItemButton>
                     </ListItem>
-                    <ListItem disablePadding>
-                        <ListItemButton onClick={() => setShowManualInput(true)}>
-                            <ListItemIcon>
-                                <Key />
-                            </ListItemIcon>
-                            <ListItemText
-                                primary={t('server.configDialog.enterKey')}
-                                secondary={t('server.configDialog.enterKeyDesc')}
+
+                    {hasRecentConfig && (
+                        <ListItem disablePadding>
+                            <ListItemButton onClick={onUseRecent}>
+                                <ListItemIcon>
+                                    <History />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary={t('server.configDialog.useRecent')}
+                                    secondary={t('server.configDialog.useRecentDesc')}
+                                />
+                            </ListItemButton>
+                        </ListItem>
+                    )}
+
+                    <ListItem sx={{ flexDirection: 'column', alignItems: 'flex-start', mt: 2 }}>
+                        <ListItemIcon sx={{ minWidth: 'auto', mr: 1, display: 'inline-flex' }}>
+                            <Key />
+                        </ListItemIcon>
+                        <ListItemText
+                            primary={t('server.configDialog.enterKey')}
+                            secondary={t('server.configDialog.enterKeyDesc')}
+                        />
+
+                        {/* 远程连接选项 */}
+                        <Box sx={{ width: '100%', mt: 2 }}>
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={isRemoteConnection}
+                                        onChange={onRemoteToggle}
+                                        color="primary"
+                                    />
+                                }
+                                label={t('server.configDialog.remoteConnection')}
                             />
-                        </ListItemButton>
-                    </ListItem>
-                </List>
-                {showManualInput && (
-                    <Box sx={{ mt: 2 }}>
-                        <Stack spacing={2}>
+                            
+                            {isRemoteConnection && (
+                                <>
+                                    <TextField
+                                        label={t('server.configDialog.remoteHost')}
+                                        value={remoteHost}
+                                        onChange={onRemoteHostChange}
+                                        fullWidth
+                                        margin="normal"
+                                        helperText={t('server.configDialog.remoteDesc')}
+                                    />
+                                    <FormControlLabel
+                                        control={
+                                            <Switch
+                                                checked={useSSL}
+                                                onChange={onSSLToggle}
+                                                color="primary"
+                                            />
+                                        }
+                                        label={t('server.configDialog.useSSL')}
+                                    />
+                                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+                                        {t('server.configDialog.sslDesc')}
+                                    </Typography>
+                                </>
+                            )}
+                        </Box>
+
+                        <Stack spacing={2} sx={{ width: '100%', mt: 2 }}>
                             <TextField
-                                fullWidth
                                 label={t('server.configDialog.adminKeyInput')}
-                                value={manualKey}
-                                onChange={(e) => setManualKey(e.target.value)}
-                                autoFocus
+                                value={adminKey}
+                                onChange={(e) => setAdminKey(e.target.value)}
+                                fullWidth
                             />
                             <TextField
                                 label={t('server.configDialog.portInput')}
                                 value={port}
-                                onChange={handlePortChange}
-                                type="text"
-                                inputProps={{
-                                    inputMode: 'numeric',
-                                    pattern: '[0-9]*',
-                                }}
+                                onChange={(e) => setPort(e.target.value)}
+                                fullWidth
+                                type="number"
+                                inputProps={{ min: 1, max: 65535 }}
                             />
                         </Stack>
-                    </Box>
-                )}
+                    </ListItem>
+                </List>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>{t('cancel')}</Button>
-                {showManualInput && (
-                    <Button
-                        onClick={handleSaveManualKey}
-                        disabled={!manualKey.trim()}
-                    >
-                        {t('save')}
-                    </Button>
-                )}
+                <Button onClick={onClose}>{t('common.cancel')}</Button>
+                <Button onClick={handleSave} color="primary">{t('save')}</Button>
             </DialogActions>
         </Dialog>
     );
-};
-
-export default ConfigSelectionDialog; 
+}
