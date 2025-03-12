@@ -1,6 +1,6 @@
 # DHConsole
 
-[English](./README.md) | 中文
+[English](./README.en.md) | 中文
 
 一个用于通过 UI 控制丹恒服务器的本地网页应用，支持12种语言。
 
