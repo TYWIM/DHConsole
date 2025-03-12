@@ -1,33 +1,30 @@
-import React, { useEffect } from 'react';
-import { Button, Select, MenuItem, Typography, Box } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Button, Select, MenuItem, Typography, Box, TextField, Switch, FormControlLabel } from '@mui/material';
 import { ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import { useTranslation } from 'react-i18next';
-import MuipService, { USE_SSL_STORAGE_KEY } from '../api/MuipService';
+import MuipService from '../api/MuipService';
+
+// 保持原有 constants 导入不变
+import { 
+  ADMIN_KEY_STORAGE_KEY,
+  HOST_STORAGE_KEY,
+  PORT_STORAGE_KEY,
+  USE_SSL_STORAGE_KEY 
+} from '../constants';
 import CommandService from '../api/CommandService';
 import { usePlayerContext } from '../store/playerContext';
 import { useSnackbar } from '../store/SnackbarContext';
 import ConfigSelectionDialog from './ConfigSelectionDialog';
 
-// Add type declaration for File System Access API
-declare global {
-  interface Window {
-    showOpenFilePicker(options?: {
-      types?: Array<{
-        description: string;
-        accept: Record<string, string[]>;
-      }>;
-    }): Promise<FileSystemFileHandle[]>;
-  }
-}
+// 添加新的常量
+const REMOTE_HOST_STORAGE_KEY = 'remote-host';
+const IS_REMOTE_STORAGE_KEY = 'is-remote-connection';
 
 interface ServerState {
-  players: { uid: number; name: string }[];
+  players: Array<{ uid: number; name: string }>;
   serverTime: string;
   serverMemory: string;
 }
-
-const ADMIN_KEY_STORAGE_KEY = 'muip-admin-key';
-const PORT_STORAGE_KEY = 'muip-port';
 
 const ServerToolbarActions = () => {
   const { t } = useTranslation();
@@ -39,6 +36,13 @@ const ServerToolbarActions = () => {
   });
   const { showSnackbar } = useSnackbar();
   const [configDialogOpen, setConfigDialogOpen] = React.useState(false);
+  // 添加远程连接状态
+  const [isRemoteConnection, setIsRemoteConnection] = useState(() => {
+    return localStorage.getItem(IS_REMOTE_STORAGE_KEY) === 'true';
+  });
+  const [remoteHost, setRemoteHost] = useState(() => {
+    return localStorage.getItem(REMOTE_HOST_STORAGE_KEY) || '';
+  });
 
   const updatePlayerUid = (uid: number) => {
     CommandService.setPlayerUid(uid);
@@ -133,23 +137,68 @@ const ServerToolbarActions = () => {
     }
   };
 
+  // 添加 SSL 开关状态
+  const [useSSL, setUseSSL] = useState(() => {
+    return localStorage.getItem(USE_SSL_STORAGE_KEY) === 'true';
+  });
+
+  // 处理 SSL 开关
+  const handleSSLToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUseSSL(event.target.checked);
+  };
+
+  // 修改 handleSaveManualKey 函数
   const handleSaveManualKey = (adminKey: string, port: number) => {
     if (!adminKey.trim()) {
       showSnackbar(t('server.messages.emptyKey'), 'error');
       return;
     }
-
+  
     if (port < 1 || port > 65535 || isNaN(port)) {
       showSnackbar(t('server.messages.invalidPort'), 'error');
       return;
     }
-
+  
+    // 保存远程连接设置
+    localStorage.setItem(IS_REMOTE_STORAGE_KEY, isRemoteConnection.toString());
+    
+    // 先设置管理员密钥
     localStorage.setItem(ADMIN_KEY_STORAGE_KEY, adminKey);
-    localStorage.setItem(PORT_STORAGE_KEY, port.toString());
     MuipService.setAdminKey(adminKey);
+    
+    // 设置端口
+    localStorage.setItem(PORT_STORAGE_KEY, port.toString());
     MuipService.setPort(port);
+    
+    // 然后设置主机和SSL
+    if (isRemoteConnection && remoteHost) {
+      localStorage.setItem(REMOTE_HOST_STORAGE_KEY, remoteHost);
+      MuipService.setHost(remoteHost);
+      // 使用用户选择的 SSL 设置
+      MuipService.setUseSSL(useSSL);
+      localStorage.setItem(USE_SSL_STORAGE_KEY, useSSL.toString());
+      console.log(`设置远程连接: ${remoteHost}, 端口: ${port}, SSL: ${useSSL}`);
+    } else {
+      // 本地连接使用默认主机
+      MuipService.setHost('localhost');
+      // 本地连接默认不使用 SSL
+      MuipService.setUseSSL(false);
+      localStorage.setItem(USE_SSL_STORAGE_KEY, 'false');
+      console.log(`设置本地连接: localhost, 端口: ${port}, SSL: false`);
+    }
+  
     setConfigDialogOpen(false);
     fetchServerInfo();
+  };
+
+  // 处理远程连接切换
+  const handleRemoteToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsRemoteConnection(event.target.checked);
+  };
+
+  // 处理远程主机输入
+  const handleRemoteHostChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRemoteHost(event.target.value);
   };
 
   useEffect(() => {
@@ -216,6 +265,12 @@ const ServerToolbarActions = () => {
         onUseRecent={handleUseRecent}
         onSaveManualKey={handleSaveManualKey}
         hasRecentConfig={Boolean(localStorage.getItem(ADMIN_KEY_STORAGE_KEY))}
+        isRemoteConnection={isRemoteConnection}
+        remoteHost={remoteHost}
+        onRemoteToggle={handleRemoteToggle}
+        onRemoteHostChange={handleRemoteHostChange}
+        useSSL={useSSL}
+        onSSLToggle={handleSSLToggle}
       />
     </>
   );
