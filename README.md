@@ -1,6 +1,6 @@
 # DHConsole
 
-English | [中文](./README.zh-CN.md)
+中文 | [English](./README.en.md)
 
 A local web app to control Danheng Server via UI with i18n support in 12 languages.
 
