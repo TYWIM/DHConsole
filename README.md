@@ -15,6 +15,7 @@
 - [x] 背包管理（向背包添加更多物品）
 - [x] 账号等级、性别和其他控制（例如解锁所有内容）
 - [x] 指定命令
+- [x] 远程连接
 
 ![功能展示](./docs/features.gif)
 
@@ -38,7 +39,7 @@
 ### 方式二：克隆并通过 npm 运行
 
 ```bash
-git clone https://github.com/Anyrainel/DHConsole.git --depth 1
+git clone https://github.com/TYWIM/DHConsole.git --depth 1
 cd DHConsole
 npm install
 npm run dev
